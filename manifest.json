@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "hzWemoji",
    	"content_scripts": [ {
-		"js": [ "assets/js/jquery-3.1.0.min.js","assets/js/emoji.js", "scheme.js", "app.js" ],
+		"js": [ "assets/js/jquery-3.1.0.min.js","assets/js/emoji.json", "scheme.js", "app.js" ],
 		"matches": [ "http://*/*",  "https://*/*"],
 		"run_at": "document_end"
 	} ],
@@ -13,6 +13,7 @@
 		"64": "assets/img/48.png",
 		"128": "assets/img/128.png"
 	},
+	"web_accessible_resources": ["assets/js/emoji.json"],
 
 	"permissions": [ "tabs", "http://*/*", "https://*/*" ],
 	"version": "0.0.1"
