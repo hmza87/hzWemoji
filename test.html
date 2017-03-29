@@ -52,9 +52,9 @@
             var ul=$('.hz-emos ul'), inp=ul.attr('data-hzinput');
             var lis=ul.find('li');
             lis.click(function(){
-                $("[data-hze]").val($("[data-hze]").val()+$(this).html());
-                console.log($("[data-hze]"));
                 
+                //console.log($("[data-hze]"));
+                $("[data-hze]").val($("[data-hze]").val()+$(this).html());
             })
 
         });
