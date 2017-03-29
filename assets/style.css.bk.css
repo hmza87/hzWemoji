@@ -1,0 +1,51 @@
+.hz-emo{
+    position: absolute;
+    left: 50px;
+    top: 100px;
+    display: block;
+    height: 120px;
+    width: 220px;
+    background: #f1f1f1;
+    box-shadow: 0px 0px 7px 1px #949494;
+    /* overflow: hidden; */
+}
+.hz-head{}
+.hz-foot{
+    background: #ccc;
+    height: 20px;
+    width: 100%;
+}
+.hz-srch{
+    overflow: hidden;
+    background: #e6e6e6;
+}
+.hz-srch input{
+    width: 100%;
+    border: 0px;
+    background: #e6e6e6;
+    font-size: 12px;
+    padding: 2px 0px 2px 20px;
+    background-image: url(img/srch.png);
+    background-repeat: no-repeat;
+    background-position: 3px 3px;
+    color: #505050;
+    margin-left: 201px;
+    cursor: pointer;
+}
+.hz-emos{
+    height: 102px;
+}
+.hz-emo ul{
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.hz-emo li{
+    float: left;
+    cursor: pointer;
+    padding: 3px;
+}
+.hz-emo span{}
+.hz-emo srch{}
