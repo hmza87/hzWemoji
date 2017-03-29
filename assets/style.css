@@ -43,6 +43,10 @@
     height: 100%;
     margin: 0;
     padding: 0;
+    
+}
+.hz-loading{
+    background: url(img/ajaxloader.gif) no-repeat;
 }
 .hz-emos li{
     float: left;

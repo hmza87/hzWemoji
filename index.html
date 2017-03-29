@@ -26,7 +26,8 @@
 
     </div>
     <div class="hz-emos">
-        <ul>
+        <ul class="hz-loading">
+            
             
         </ul>
 
@@ -40,24 +41,51 @@
     <script src="assets/js/jquery-3.1.0.min.js"></script>
     <script>
         var emos;
+        var ul=jQuery('.hz-emos ul'), inp=ul.attr('data-hzinput');
+        var lis=ul.find('li');
         jQuery.getJSON('https://raw.githubusercontent.com/lionzhunter/hzWemoji/master/assets/js/emoji.json', function(settings) {
             emos = settings;
             for(i=0;i<120;i++)
                 jQuery('.hz-emos ul').append('<li>'+emos[i].emoji+'</li>');
+                ul.removeClass('hz-loading');
+                lis=ul.find('li');
+                lis.click(function(){
+                
+                //console.log($("[data-hze]"));
+                $("input[data-hze]").val($("input[data-hze]").val()+$(this).html());
+            })
+
 
             
             
         });
         jQuery(document).ready(function(){
-            var ul=$('.hz-emos ul'), inp=ul.attr('data-hzinput');
-            var lis=ul.find('li');
-            lis.click(function(){
+            $('.hz-srch input').click(function(){
                 
-                //console.log($("[data-hze]"));
-                $("[data-hze]").val($("[data-hze]").val()+$(this).html());
-            })
+                if($(this).css('margin-left')=='201px')
+                    $(this).animate({
+                        marginLeft: '-=201px'
+                    }, 1000).css('cursor', 'default');
+                else
+                    $(this).animate({
+                        marginLeft: '+=201px'
+                    }).css('cursor', 'pointer');
 
+
+
+            });
+            
+            
+            
         });
+        function toLft(e){
+            console.log(e);
+            var aa=e.css('margin-left');
+            
+            e.css('margin-left', aa-1);
+            if(aa-1>0) setTimeout(toLft(), 100);
+            console.log(aa)
+        }
 
 
     </script>
