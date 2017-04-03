@@ -18,7 +18,7 @@ var hzEmo = {
             }).keyup(function(e){
                 hzEmo.clear()
                     .put(hzEmo.search($(this).val()))
-                    .assigneClick();
+                    .handlClick();
                 });
         return this;
     },
@@ -40,7 +40,7 @@ var hzEmo = {
             hzEmo.all = s;
             hzEmo.loading(false)
                 .put()
-                .assigneClick();
+                .handleClick();
             if(callback!=undefined)  callback();
         });
         return this;
@@ -74,7 +74,7 @@ var hzEmo = {
         }
         return tmp;
     },
-    assigneClick: function(){
+    handlClick: function(){
         this.LIS.click(function(){
             $("input[data-hze]").val($("input[data-hze]").val()+$(this).html());
         });
