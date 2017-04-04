@@ -39,79 +39,15 @@
 </div>
 
     <script src="assets/js/jquery-3.1.0.min.js"></script>
+    <script src="assets/js/lib.js"></script>
     <script>
-        var emos;
-        var MAX = 120;
-        var ul=jQuery('.hz-emos ul'), inp=ul.attr('data-hzinput');
-        var lis=ul.find('li');
-        jQuery.getJSON('https://raw.githubusercontent.com/lionzhunter/hzWemoji/master/assets/js/emoji.json', function(settings) {
-            emos = settings;
-            for(i=0;i<MAX;i++)
-                jQuery('.hz-emos ul').append('<li>'+emos[i].emoji+'</li>');
-                ul.removeClass('hz-loading');
-                lis=ul.find('li');
-                lis.click(function(){
-                
-                //console.log($("[data-hze]"));
-                $("input[data-hze]").val($("input[data-hze]").val()+$(this).html());
-            })
-
-
-            
-            
-        });
+        
         jQuery(document).ready(function(){
-            $('.hz-srch input').click(function(){
-                if($(this).css('margin-left')=='201px'){
-                    $(this).animate({marginLeft: '-=201px'}, 1000).css('cursor', 'text');
-                };
-            }).focusout(function(){
-                if($(this).css('margin-left')=='0px'){
-                     $(this).animate({marginLeft: '+=201px'}).css('cursor', 'pointer');
-                }
-                   
-            }).keyup(function(e){
-               
-                var v=$(this).val(), tmp=[];
-                for(i=0;i<emos.length;i++){
-                    
-                    for(t=0;t<emos[i].tags.length;t++){
-                        
-                        if(emos[i].tags[t].includes(v))
-                            tmp.push(emos[i].emoji);
-                    }
-                        
-                
-                    if(tmp.length>MAX){console.log('full'); break;}
-                }
-                
-                jQuery('.hz-emos ul').html('');
-                for(i=0;i<tmp.length;i++){
-                    jQuery('.hz-emos ul').append('<li>'+tmp[i]+'</li>');
-                }
-                lis=ul.find('li');
-                lis.click(function(){
-                
-                //console.log($("[data-hze]"));
-                $("input[data-hze]").val($("input[data-hze]").val()+$(this).html());
-            })
-                
-                
-
-            });
+            hzePopup.init().load(function(){
+ +            console.log('DONE!')
+          });
+        })
             
-            
-            
-            
-        });
-        function toLft(e){
-            console.log(e);
-            var aa=e.css('margin-left');
-            
-            e.css('margin-left', aa-1);
-            if(aa-1>0) setTimeout(toLft(), 100);
-            console.log(aa)
-        }
 
 
     </script>
