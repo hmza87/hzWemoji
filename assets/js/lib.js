@@ -5,11 +5,11 @@ var hzePopup = {
     POPUPDOM: ".hz-emos",
     SRCHDOM: '.hz-srch',
     LOADING_CLASS: 'hz-loading',
-    UL: jQuery(this.POPUPDOM+' ul'),
-    LIS: jQuery(this.POPUPDOM+' ul').find('li'),
-    INPUT:  $(this.SRCHDOM+' input'),
+    UL: jQuery('.hz-emos ul'),
+    LIS: jQuery('.hz-emos ul').find('li'),
+    INPUT:  $('.hz-srch input'),
     init: function(){
-        this.INPUT.click(function(){
+        hzePopup.INPUT.click(function(){
                 if($(this).css('margin-left')=='201px'){
                     $(this).animate({marginLeft: '-=201px'}, 1000).css('cursor', 'text');
                 };
@@ -27,19 +27,19 @@ var hzePopup = {
     },
     loading: function(v){
         if(v==undefined){
-            return this.UL.hasClass(hzePopup.LOADING_CLASS)
+            return hzePopup.UL.hasClass(hzePopup.LOADING_CLASS)
         }else{
             if(v){
-                this.UL.addClass(hzePopup.LOADING_CLASS);
+                hzePopup.UL.addClass(hzePopup.LOADING_CLASS);
             }else{
-                this.UL.removeClass(hzePopup.LOADING_CLASS);
+                hzePopup.UL.removeClass(hzePopup.LOADING_CLASS);
             }
         }
         return this;
     },
     load: function(callback){
         this.loading(true);
-        jQuery.getJSON(this.url, function(s) {
+        jQuery.getJSON(hzePopup.url, function(s) {
             hzePopup.all = s;
             hzePopup.loading(false)
                 .put()
@@ -49,17 +49,17 @@ var hzePopup = {
         return this;
     },
     clear: function(){
-        this.UL.html('');
+        hzePopup.UL.html('');
         return this;
     },
     put: function(list){
         if(list==undefined){
-            for(i=0;i<this.MAX;i++){
-                this.UL.append('<li>'+this.all[i].emoji+'</li>');
+            for(i=0;i<hzePopup.MAX;i++){
+                hzePopup.UL.append('<li>'+hzePopup.all[i].emoji+'</li>');
             }
         }else{
             for(i=0;i<list.length;i++){
-            this.UL.append('<li>'+list[i]+'</li>');
+            hzePopup.UL.append('<li>'+list[i]+'</li>');
             if(i>=MAX) break;
         }
         }
@@ -67,10 +67,10 @@ var hzePopup = {
     },
     search: function(v){
         var tmp=[];
-        for(i=0;i<this.all.length;i++){
-            for(t=0;t<this.all[i].tags.length;t++){
-                if(this.all[i].tags[t].includes(v)){
-                  tmp.push(this.all[i].emoji);  
+        for(i=0;i<hzePopup.all.length;i++){
+            for(t=0;t<hzePopup.all[i].tags.length;t++){
+                if(hzePopup.all[i].tags[t].includes(v)){
+                  tmp.push(hzePopup.all[i].emoji);  
                 }
             }
             if(tmp.length>MAX){console.log('full'); break;}
@@ -78,7 +78,7 @@ var hzePopup = {
         return tmp;
     },
     handlClick: function(){
-        this.LIS.click(function(){
+        hzePopup.LIS.click(function(){
             $("input[data-hze]").val($("input[data-hze]").val()+$(this).html());
         });
         return this;
